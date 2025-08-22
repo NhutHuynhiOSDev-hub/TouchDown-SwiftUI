@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: - COLOR
 let colorGray       : Color = Color(.systemGray4)
-let colorBackgroud  : Color = Color("ColorBackground")
+let colorBackground  : Color = Color("ColorBackground")
 
 
 // MARK: - LAYOUT
