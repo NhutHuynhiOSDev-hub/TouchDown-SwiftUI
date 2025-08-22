@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     // MARK: - PROPERTIES
-    
+    private let windownScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
     
     // MARK: - BODY
     var body: some View {
@@ -18,14 +18,21 @@ struct ContentView: View {
                 NavigationBarView()
                     .padding(.horizontal, 15)
                     .padding(.bottom)
-                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(.top, windownScene?.keyWindow?.safeAreaInsets.top ?? 0)
                     .background(.white)
                     .shadow(color: .white.opacity(0.05) ,radius: 5, x: 0.0, y: 5)
                 
-                Spacer()
-                
-                FooterView()
-                    .padding(.horizontal)
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        
+                        FeaturesTabView()
+                            .padding(.vertical, 20)
+                            .frame(height: UIScreen.main.bounds.width / 1.475)
+                        
+                        FooterView()
+                            .padding(.horizontal)
+                    }
+                }//: SCROLL VIEW
             }//: V-STACK
             .background(colorBackground.ignoresSafeArea(.all, edges: .all))
         }//: Z-STACK
